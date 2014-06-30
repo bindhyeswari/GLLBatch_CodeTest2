@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+     /*   HTMLUListElement.prototype.add = function (str){
+
+            var li = document.createElement('li');
+            li.innerHTML = str;
+            this.appendChild(li);
+        };*/
+        document.addEventListener('DOMContentLoaded', function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'http://restcountries.eu/rest/v1/region/africa');
+                xhr.onreadystatechange = function () {
+                    // check for status and readyState
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        //console.log(xhr.responseText);
+                        var obj = JSON.parse(xhr.responseText);
+                        //console.log(obj);
+                        var population=0;
+                        for (var i=0; i<obj.length;i++){
+                            if (obj[i]["name"]=='Tunisia'){
+                                population=obj[i]["population"];
+                                console.log(population);
+                            }
+                                //console.log(obj[i]["name"]+'  =>'+obj[i]["population"]);
+                        }
+                        var smallvalues=[];
+                        smallvalues = obj.filter(function(x) { return x < population });
+                        console.log(smallvalues);
+
+                    }
+                };
+                xhr.send();
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

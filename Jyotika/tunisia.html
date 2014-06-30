@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Tunisia</title>
+    <script>
+
+        function getPopulation(obj, country){
+
+            for(var i= 0; i<obj.length;i++){
+                if(obj[i].name === country)
+                {
+                       console.log("********Country: "+country+" Population: "+obj[i].population);
+                       return obj[i].population;
+
+
+                }
+            }
+
+            return -1;
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://restcountries.eu/rest/v1/region/africa');
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState === 4) {
+                var obj = JSON.parse(xhr.responseText);
+               // console.log(obj[0].population);
+
+                var population_check = getPopulation(obj, "Tunisia");
+
+                console.log("********Population Check: "+population_check);
+
+
+                for(var i=0; i< obj.length;i++)
+                {
+                    if(obj[i].population < population_check){
+                        console.log("Country: "+obj[i].name+" Population: "+obj[i].population);
+                    }
+                }
+            }
+        };
+        xhr.send();
+
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>
