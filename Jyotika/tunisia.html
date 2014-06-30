@@ -20,25 +20,43 @@
             return -1;
         }
 
+        var population_check;
+
+        function isLessThan(elem){
+            return(elem.population< population_check);
+        }
+
+
+
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://restcountries.eu/rest/v1/region/africa');
         xhr.onreadystatechange = function () {
 
             if (xhr.readyState === 4) {
                 var obj = JSON.parse(xhr.responseText);
-               // console.log(obj[0].population);
+                // console.log(obj[0].population);
 
-                var population_check = getPopulation(obj, "Tunisia");
+               population_check = getPopulation(obj, "Tunisia");
 
-                console.log("********Population Check: "+population_check);
-
-
-                for(var i=0; i< obj.length;i++)
+                console.log("********Population Check: " + population_check);
+                /* for(var i=0; i< obj.length;i++)
                 {
                     if(obj[i].population < population_check){
                         console.log("Country: "+obj[i].name+" Population: "+obj[i].population);
                     }
-                }
+                }*/
+
+
+
+                var filtered = obj.filter(isLessThan);
+
+               // console.log(filtered);
+
+                var countries = filtered.map(function(elem){
+                    return elem.name;
+                });
+
+                console.log("Countries: "+countries);
             }
         };
         xhr.send();
