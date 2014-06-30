@@ -1,0 +1,9 @@
+
+  501  pwd
+  502  git init 
+  503  git add .
+  504  git commit -m 'test complete'
+  505  git remote add github git@github.com:pvtech/GLLBatch_CodeTest2.git
+  506  git pull github master
+  507  git push github master
+  508  history > commands.txt
