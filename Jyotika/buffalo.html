@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Buffalo</title>
     <script>
-        var string = "Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo";
+        var arr = "Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo";
 
-        var arr= string.split(" ");
+       // var arr= string.split(" ");
 
         console.log(arr);
 
@@ -18,7 +18,7 @@
             console.log(pos);
             if(pos != -1) {
                 indexes.push(pos);
-                i = pos+1;
+                i = pos+1; //start searching from next position
             }
             else
                 break;

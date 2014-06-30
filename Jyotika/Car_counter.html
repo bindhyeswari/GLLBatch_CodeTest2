@@ -5,21 +5,21 @@
     <title>Car counter</title>
     <script>
 
-        Car.prototype.count = 0;
+        Car.count = 0;
 
         function Car(name, year){
-            Car.prototype.count++;
+            Car.count++;
             this.name =name;
             this.year = year;
         }
 
         var c1 = new Car('Honda', '1989');
         var c2 = new Car('Civic', '1234');
-        console.log("Number of cars: "+Car.prototype.count);
+        console.log("Number of cars: "+Car.count);
 
         var c3 = new Car('Civic', '1233');
         var c4 = new Car('Civic', '1123');
-        console.log("Number of cars: "+Car.prototype.count);
+        console.log("Number of cars: "+Car.count);
 
     </script>
 </head>
